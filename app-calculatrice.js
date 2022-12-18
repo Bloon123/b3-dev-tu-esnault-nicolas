@@ -1,37 +1,51 @@
 class Calculator {
     constructor() {
-        this.currentValue = 0;
+      this.currentValue = 0;
     }
-    
-    add(number) {
-        this.currentValue += number;
-        return this.currentValue;
+  
+    add(value) {
+      if (typeof value !== 'number') {
+        throw new TypeError('Value must be a number');
+      }
+      this.currentValue += value;
+      return this.currentValue;
     }
-    
-    subtract(number) {
-        this.currentValue -= number;
-        return this.currentValue;
+  
+    subtract(value) {
+      if (typeof value !== 'number') {
+        throw new TypeError('Value must be a number');
+      }
+      this.currentValue -= value;
+      return this.currentValue;
     }
-    
-    multiply(number) {
-        this.currentValue *= number;
-        return this.currentValue;
+  
+    multiply(value) {
+      if (typeof value !== 'number') {
+        throw new TypeError('Value must be a number');
+      }
+      this.currentValue *= value;
+      return this.currentValue;
     }
-    
-    divide(number) {
-        this.currentValue /= number;
-        return this.currentValue;
+  
+    divide(value) {
+      if (typeof value !== 'number') {
+        throw new TypeError('Value must be a number');
+      }
+      if (value === 0) {
+        throw new Error('Cannot divide by 0');
+      }
+      this.currentValue /= value;
+      return this.currentValue;
     }
-    
+  
     clear() {
-        this.currentValue = 0;
-        return this.currentValue;
+      this.currentValue = 0;
+      return this.currentValue;
     }
-}
-
-module.exports = {
-    Calculator:Calculator
-}
+  }
+  
+  module.exports = { Calculator };
+  
 
 
 const calc = new Calculator();
