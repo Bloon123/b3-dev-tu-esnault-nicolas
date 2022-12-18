@@ -37,4 +37,35 @@ describe('Testing the Calculator Functions', function() {
         expect(calc.clear()).to.equal(0);
         done();
     });
+
+    it('6. Dividing by 0', function(done) {
+        let calc = new Calculator();
+        expect(function() { calc.divide(0) }).to.throw(Error);
+        done();
+    });
+
+    it('7. Adding and subtracting negative numbers', function(done) {
+        let calc = new Calculator();
+        expect(calc.add(-10)).to.equal(-10);
+        expect(calc.subtract(-5)).to.equal(-5);
+        expect(calc.add(-15)).to.equal(-20);
+        done();
+    });
+    
+    it('8. Using floating point numbers', function(done) {
+        let calc = new Calculator();
+        expect(calc.add(10.5)).to.equal(10.5);
+        expect(calc.multiply(1.5)).to.equal(15.75);
+        expect(calc.divide(2.5)).to.equal(6.3);
+        done();
+    });
+        
+    it('9. Using non-numeric values', function(done) {
+        let calc = new Calculator();
+        expect(function() { calc.add('10') }).to.throw(TypeError);
+        expect(function() { calc.subtract([5]) }).to.throw(TypeError);
+        expect(function() { calc.multiply({ x: 5 }) }).to.throw(TypeError);
+        expect(function() { calc.divide(null) }).to.throw(TypeError);
+        done();
+    });  
 });
